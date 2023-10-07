@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  ibexa:
+    build: ibexa/
+    # volumes:
+    #   - $PWD:/ibexa/

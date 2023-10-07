@@ -1,4 +1,4 @@
-FROM php:7
+FROM php:7.4-apache
 #FROM php:8.0-cli
 
 #COPY --from=composer /usr/bin/composer /usr/bin/composer
@@ -16,5 +16,10 @@ RUN php -m && php -v
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs && npm install --global yarn
 
 RUN echo "memory_limit = -1" >> /usr/local/etc/php/php.ini
-RUN composer create-project ibexa/oss-skeleton ibexa_website v3.3.29
+#RUN composer create-project ibexa/oss-skeleton ibexa_website v3.3.29
+COPY entrypoint.sh /entrypoint.sh
+RUN mkdir /ibexa
+ENTRYPOINT [ "/entrypoint.sh" ]
+WORKDIR /ibexa
+
 
