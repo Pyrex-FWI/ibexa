@@ -3,5 +3,21 @@ version: '3'
 services:
   ibexa:
     build: ibexa/
-    # volumes:
-    #   - $PWD:/ibexa/
+    volumes:
+      - $PWD:/ibexa/
+    ports:
+      - "8000:8000"
+  ezdb:
+    image: mariadb:10
+    restart: always
+    environment:
+      - MARIADB_USER=ez
+      - MARIADB_PASSWORD=ez
+      - MARIADB_ROOT_PASSWORD=ez
+      - MARIADB_DATABASE=ez
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

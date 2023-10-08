@@ -1,9 +1,9 @@
 FROM php:7.4-apache
 #FROM php:8.0-cli
 
-#COPY --from=composer /usr/bin/composer /usr/bin/composer
-
-RUN apt update -y && apt install git zip unzip -y
+RUN apt update -y && apt install git zip unzip python2 jq -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+ENV NVM_DIR /root/.nvm
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
@@ -11,9 +11,10 @@ COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr
 
 RUN install-php-extensions zip intl
 RUN install-php-extensions xsl
-RUN php -m && php -v
+RUN install-php-extensions pdo_mysql
+RUN curl -sS https://get.symfony.com/cli/installer | bash
 
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs && npm install --global yarn
+#RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && apt-get install -y nodejs && npm install --global yarn
 
 RUN echo "memory_limit = -1" >> /usr/local/etc/php/php.ini
 #RUN composer create-project ibexa/oss-skeleton ibexa_website v3.3.29
