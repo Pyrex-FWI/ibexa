@@ -72,4 +72,5 @@ setComposerVersion --1
  cmpInstall /ibexa/ezplatform_website
 
 
-/usr/local/bin/docker-php-entrypoint apache2-foreground
+# /usr/local/bin/docker-php-entrypoint apache2-foreground
+/usr/local/bin/docker-php-entrypoint
