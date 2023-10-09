@@ -2,7 +2,7 @@ version: '3'
 
 services:
   ibexa:
-    build: ibexa/
+    build: config/
     volumes:
       - $PWD:/ibexa/
     ports:
@@ -10,14 +10,23 @@ services:
   ezdb:
     image: mariadb:10
     restart: always
+    volumes:
+      - $PWD/config/mariadb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     environment:
       - MARIADB_USER=ez
       - MARIADB_PASSWORD=ez
       - MARIADB_ROOT_PASSWORD=ez
       - MARIADB_DATABASE=ez
-
+  
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+    
+  httpd:
+    image: httpd:2.4-alpine
+    volumes:
+      - $PWD:/ibexa/
+    ports:
+      - "82:80"

@@ -1,9 +1,15 @@
-FROM php:7.4-apache
-#FROM php:8.0-cli
+FROM php:7.4-fpm
+
+COPY  --from=3snetregistry.azurecr.io/suez/zscaler:latest /usr/share/ca-certificates/ZscalerRootCertificate-2048-SHA256.crt /usr/share/ca-certificates/ZscalerRootCertificate-2048-SHA256.crt
+RUN echo 'ZscalerRootCertificate-2048-SHA256.crt' >> /etc/ca-certificates.conf
+RUN update-ca-certificates
 
 RUN apt update -y && apt install git zip unzip python2 jq -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 ENV NVM_DIR /root/.nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash \
+    && chmod +x $NVM_DIR/nvm.sh && $NVM_DIR/nvm.sh \
+    && nvm install v16.20.2 \
+    && npm -g install yarn
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/

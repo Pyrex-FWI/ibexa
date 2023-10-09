@@ -22,10 +22,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-echo "[*] Install node"
-nvm install v16.20.2
-echo "[*] Install yarn"
-npm -g install yarn
+# echo "[*] Install node"
+# nvm install v16.20.2
+npm config set strict-ssl false #Corp with Nice Zscaler
+
+# echo "[*] Install yarn"
+# npm -g install yarn
+yarn config set strict-ssl false #Corp with Nice Zscaler
+
 
 if [ ! -d "/ibexa/ibexa_website" ]; then
   composer create-project ibexa/oss-skeleton ibexa_website v3.3.35 --no-install
