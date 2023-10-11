@@ -1,12 +1,11 @@
 version: '3'
 
 services:
-  ibexa:
+  php-fpm:
     build: config/
     volumes:
       - $PWD:/ibexa/
-    ports:
-      - "8000:8000"
+
   ezdb:
     image: mariadb:10
     restart: always
@@ -28,5 +27,9 @@ services:
     image: httpd:2.4-alpine
     volumes:
       - $PWD:/ibexa/
+      - $PWD/config/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf
     ports:
       - "82:80"
+    # depends_on:
+    #   ibexa:
+    #     condition: service_healthy

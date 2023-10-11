@@ -4,7 +4,7 @@ COPY  --from=3snetregistry.azurecr.io/suez/zscaler:latest /usr/share/ca-certific
 RUN echo 'ZscalerRootCertificate-2048-SHA256.crt' >> /etc/ca-certificates.conf
 RUN update-ca-certificates
 
-RUN apt update -y && apt install git zip unzip python2 jq -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN apt update -y && apt install libfcgi-bin git zip unzip python2 jq -y --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /usr/local/nvm
 ENV NVM_DIR /usr/local/nvm
@@ -31,7 +31,14 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | b
 
 ENV PATH $NVM_DIR/versions/node/v16.20.2/bin/:$PATH
 COPY entrypoint.sh /entrypoint.sh
+COPY php-fpm-healthcheck.sh /usr/local/bin/php-fpm-healthcheck
+
 RUN mkdir /ibexa
+
+RUN chmod +x /usr/local/bin/php-fpm-healthcheck /entrypoint.sh
+
+HEALTHCHECK --interval=15s --timeout=2s --retries=6 CMD ["php-fpm-healthcheck"]
+
 ENTRYPOINT [ "/entrypoint.sh" ]
 WORKDIR /ibexa
 

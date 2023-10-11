@@ -73,4 +73,10 @@ setComposerVersion --1
 
 
 # /usr/local/bin/docker-php-entrypoint apache2-foreground
-/usr/local/bin/docker-php-entrypoint
+
+echo 'ping.path = /ping' >> /usr/local/etc/php-fpm.d/www.conf
+echo 'ping.path=/ping' >> /usr/local/etc/php-fpm.d/www.conf
+echo 'ping.response=pong' >> /usr/local/etc/php-fpm.d/www.conf
+
+
+/usr/local/bin/docker-php-entrypoint php-fpm
