@@ -34,12 +34,18 @@ COPY entrypoint.sh /entrypoint.sh
 COPY php-fpm-healthcheck.sh /usr/local/bin/php-fpm-healthcheck
 
 RUN mkdir /ibexa
+WORKDIR /ibexa
 
 RUN chmod +x /usr/local/bin/php-fpm-healthcheck /entrypoint.sh
 
+# RUN /entrypoint.sh
+RUN echo "alias ll='ls $LS_OPTIONS -l'" >> /root/.bashrc
+
 HEALTHCHECK --interval=15s --timeout=2s --retries=6 CMD ["php-fpm-healthcheck"]
 
+RUN cd /ibexa && (composer create-project ezsystems/ezplatform-demo ezplatform-demo.2.5.9 2.5.9 --no-install || true)
+RUN install-php-extensions gd
+
 ENTRYPOINT [ "/entrypoint.sh" ]
-WORKDIR /ibexa
 
 

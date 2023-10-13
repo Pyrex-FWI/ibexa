@@ -80,3 +80,14 @@ echo 'ping.response=pong' >> /usr/local/etc/php-fpm.d/www.conf
 
 
 /usr/local/bin/docker-php-entrypoint php-fpm
+
+#composer create-project ezsystems/ezplatform-demo ezplatform_demo_websitev2.5.9 2.5.9 --no-install
+# git clone https://github.com/Pyrex-FWI/ezplatform-demo.git -b 2.5.9
+#cd ezplatform_demo_websitev2.5.9
+# (jq .  < composer.json) > composer.json.init
+# (jq 'del(.scripts."symfony-scripts"[] | select(. == "@php bin/security-checker security:check"))'  < composer.json.init) \
+# | jq 'del(.require."roave/security-advisories")' | jq . > composer.json
+# composer install -n
+# //npm update --depth 5 @babel/preset-env
+# //yarn update --depth 5 @babel/preset-env
+# yarn upgrade --scope @babel

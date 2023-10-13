@@ -11,18 +11,21 @@ services:
     restart: always
     volumes:
       - $PWD/config/mariadb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - mariadb:/var/lib/mysql
     environment:
       - MARIADB_USER=ez
       - MARIADB_PASSWORD=ez
       - MARIADB_ROOT_PASSWORD=ez
       - MARIADB_DATABASE=ez
-  
+    ports:
+      - "3306:3306"
+
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
-    
+  
   httpd:
     image: httpd:2.4-alpine
     volumes:
@@ -34,3 +37,8 @@ services:
     # depends_on:
     #   ibexa:
     #     condition: service_healthy
+
+
+
+volumes:
+  mariadb:
