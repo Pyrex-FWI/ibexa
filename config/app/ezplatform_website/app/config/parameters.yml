@@ -1,0 +1,12 @@
+# This file is auto-generated during the composer install
+parameters:
+    env(SYMFONY_SECRET): ThisEzPlatformTokenIsNotSoSecret_PleaseChangeIt
+    env(DATABASE_DRIVER): pdo_mysql
+    env(DATABASE_HOST): ezdb
+    env(DATABASE_PORT): null
+    env(DATABASE_NAME): ez
+    env(DATABASE_USER): ez
+    env(DATABASE_PASSWORD): ez
+    env(DATABASE_CHARSET): utf8mb4
+    env(DATABASE_COLLATION): utf8mb4_unicode_520_ci
+    env(DATABASE_VERSION): mariadb-10.11.5

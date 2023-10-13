@@ -1,0 +1,3 @@
+CREATE DATABASE ibexa;
+
+GRANT ALL PRIVILEGES ON ibexa.* TO 'ez'@'%';

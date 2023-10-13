@@ -34,12 +34,13 @@ yarn config set strict-ssl false #Corp with Nice Zscaler
 if [ ! -d "/ibexa/ibexa_website" ]; then
   composer create-project ibexa/oss-skeleton ibexa_website v3.3.35 --no-install
   mv /ibexa/ibexa_website/composer.lock /ibexa/ibexa_website/composer.lock.init_back
-  setComposerVersion "--2"
-  cmpInstall /ibexa/ibexa_website
+
 fi
 
 setComposerVersion "--2"
 cmpInstall /ibexa/ibexa_website
+cd /ibexa/ibexa_website && yarn install
+cd /ibexa/ibexa_website && yarn build
 
 echo ""
 echo "===================================="

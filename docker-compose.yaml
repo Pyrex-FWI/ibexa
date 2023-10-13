@@ -31,9 +31,9 @@ services:
     volumes:
       - $PWD:/ibexa/
       - $PWD/config/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf
-      - $PWD/config/httpd/conf/extra/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+      - $PWD/config/httpd/vhosts:/usr/local/apache2/conf/vhosts/
     ports:
-      - "82:80"
+      - "80:80"
     # depends_on:
     #   ibexa:
     #     condition: service_healthy
