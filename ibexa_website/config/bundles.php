@@ -52,4 +52,6 @@ return [
     Novactive\Bundle\eZSEOBundle\NovaeZSEOBundle::class => ['all' => true],
     Lolautruche\EzCoreExtraBundle\EzCoreExtraBundle::class => ['all' => true],
     Netgen\TagsBundle\NetgenTagsBundle::class => ['all' => true],
+    Lolautruche\EzCoreExtraBundle\EzCoreExtraBundle::class => ['all' => true],
+    Netgen\TagsBundle\NetgenTagsBundle::class => ['all' => true],
 ];
