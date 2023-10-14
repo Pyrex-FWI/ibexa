@@ -1,0 +1,19 @@
+UserGroupContent:
+    type: object
+    inherits:
+        - AbstractDomainContent
+    config:
+        interfaces:
+            - DomainContent
+            - Node
+        fields:
+            name:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "name", args])'
+                args:
+                    language: { type: RepositoryLanguage }
+            description:
+                type: String
+                resolve: '@=resolver("DomainFieldValue", [value, "description", args])'
+                args:
+                    language: { type: RepositoryLanguage }
