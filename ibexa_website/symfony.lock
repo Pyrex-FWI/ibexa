@@ -307,6 +307,9 @@
             "config/routes/liip_imagine.yaml"
         ]
     },
+    "lolautruche/ez-core-extra-bundle": {
+        "version": "v3.0.0"
+    },
     "nelmio/cors-bundle": {
         "version": "2.3",
         "recipe": {
@@ -318,6 +321,9 @@
         "files": [
             "config/packages/nelmio_cors.yaml"
         ]
+    },
+    "netgen/tagsbundle": {
+        "version": "4.0.19"
     },
     "oneup/flysystem-bundle": {
         "version": "3.7",

@@ -9,6 +9,7 @@
         "ext-iconv": "*",
         "http-interop/http-factory-guzzle": "^1.2",
         "ibexa/oss": "3.3.35",
+        "netgen/tagsbundle": "^4.0",
         "novactive/ezseobundle": "^6.0.1",
         "symfony/console": "5.4.*",
         "symfony/dotenv": "5.4.*",

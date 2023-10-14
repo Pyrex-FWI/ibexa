@@ -49,5 +49,7 @@ return [
     BabDev\PagerfantaBundle\BabDevPagerfantaBundle::class => ['all' => true],
     Hautelook\TemplatedUriBundle\HautelookTemplatedUriBundle::class => ['all' => true],
     Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
-    Novactive\Bundle\eZSEOBundle\NovaeZSEOBundle::class => [ 'all'=> true ],
+    Novactive\Bundle\eZSEOBundle\NovaeZSEOBundle::class => ['all' => true],
+    Lolautruche\EzCoreExtraBundle\EzCoreExtraBundle::class => ['all' => true],
+    Netgen\TagsBundle\NetgenTagsBundle::class => ['all' => true],
 ];
