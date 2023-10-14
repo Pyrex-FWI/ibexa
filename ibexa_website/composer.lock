@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eac09534ccc29fa16c5b5d8bd325d666",
+    "content-hash": "67dbe59e6cb7e17c5c49deaa81597582",
     "packages": [
         {
             "name": "babdev/pagerfanta-bundle",
@@ -5461,6 +5461,76 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.17.1"
             },
             "time": "2023-08-13T19:53:39+00:00"
+        },
+        {
+            "name": "novactive/ezseobundle",
+            "version": "v6.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Novactive/NovaeZSEOBundle.git",
+                "reference": "ce13aeeaed17cb4cc3fcac99d63f8305ac07d404"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Novactive/NovaeZSEOBundle/zipball/ce13aeeaed17cb4cc3fcac99d63f8305ac07d404",
+                "reference": "ce13aeeaed17cb4cc3fcac99d63f8305ac07d404",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-pdo": "*",
+                "php": "^7.3"
+            },
+            "type": "ezplatform-bundle",
+            "extra": {
+                "thanks": {
+                    "name": "ezsystems/ezplatform",
+                    "url": "https://github.com/ezsystems/ezplatform"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Novactive\\Bundle\\eZSEOBundle\\": "bundle"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Novactive",
+                    "email": "dir.tech@novactive.com",
+                    "homepage": "https://www.novactive.us"
+                },
+                {
+                    "name": "Sebastien Morel",
+                    "email": "morel.seb@gmail.com",
+                    "homepage": "https://github.com/Plopix"
+                }
+            ],
+            "description": "Novactive eZ SEO Bundle is an eZ Platform bundle for SEO simplications. metas, sitemaps, robots.txt, etc.",
+            "homepage": "https://github.com/Novactive/NovaeZSEOBundle",
+            "keywords": [
+                "Sitemap",
+                "ezplatform",
+                "metas",
+                "novactive",
+                "robots.txt",
+                "seo"
+            ],
+            "support": {
+                "issues": "https://github.com/Novactive/NovaeZSEOBundle/issues",
+                "source": "https://github.com/Novactive/NovaeZSEOBundle/tree/v6.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/plopix",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-08-19T18:14:57+00:00"
         },
         {
             "name": "oneup/flysystem-bundle",
