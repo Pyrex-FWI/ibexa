@@ -7,14 +7,14 @@ namespace App\Twig;
 
 use App\PremiumContent\HtmlRenderer;
 use App\User\UserGroups;
-use Twig_Extension;
-use Twig_SimpleFilter;
-use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
+use Twig\TwigFilter;
 
 /**
  * Twig helper for premium content.
  */
-class PremiumContentExtension extends Twig_Extension
+class PremiumContentExtension extends AbstractExtension
 {
     /** @var \App\PremiumContent\HtmlRenderer */
     private $htmlRenderer;
@@ -61,7 +61,7 @@ class PremiumContentExtension extends Twig_Extension
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction('ez_has_access_to_premium_content', [$this, 'hasAccessToPremiumContent']),
+            new TwigFunction('ez_has_access_to_premium_content', [$this, 'hasAccessToPremiumContent']),
         ];
     }
 
@@ -73,7 +73,7 @@ class PremiumContentExtension extends Twig_Extension
     public function getFilters()
     {
         return [
-            new Twig_SimpleFilter('previewPremiumContent', [$this, 'previewPremiumContent'], ['is_safe' => ['html']]),
+            new TwigFilter('previewPremiumContent', [$this, 'previewPremiumContent'], ['is_safe' => ['html']]),
         ];
     }
 

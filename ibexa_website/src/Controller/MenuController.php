@@ -6,7 +6,7 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Templating\EngineInterface;
+use Twig\Environment;
 use eZ\Publish\API\Repository\SearchService;
 use App\QueryType\MenuQueryType;
 
@@ -35,7 +35,7 @@ class MenuController
      * @param array $topMenuContentTypeIdentifier
      */
     public function __construct(
-        EngineInterface $templating,
+        Environment $templating,
         SearchService $searchService,
         MenuQueryType $menuQueryType,
         $topMenuParentLocationId,
@@ -71,15 +71,19 @@ class MenuController
         }
 
         $pathArray = $pathString ? explode("/", $pathString) : [];
-
+        // dump($pathArray);
+        // die();
         $response = new Response();
         $response->setVary('X-User-Hash');
-
-        return $this->templating->renderResponse(
+        $content = $this->templating->render(
             $template, [
                 'menuItems' => $menuItems,
                 'pathArray' => $pathArray,
-            ], $response
+            ]
         );
+
+        $response->setContent($content);
+
+        return $response;
     }
 }

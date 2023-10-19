@@ -29,7 +29,14 @@ Encore.addEntry('welcome_page', [
     path.resolve(__dirname, './assets/scss/welcome-page.scss'),
 ]);
 
+
 Encore.addEntry('app', './assets/app.js');
+
+Encore.addEntry('demo', [
+    path.resolve(__dirname, './assets/scss/demo.scss'),
+    path.resolve(__dirname, './assets/js/placesMapLoader.js'),
+]);
+
 
 const projectConfig = Encore.getWebpackConfig();
 
